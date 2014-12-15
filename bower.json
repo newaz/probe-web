@@ -1,0 +1,19 @@
+{
+  "name": "probe-web",
+  "version": "0.0.1",
+  "homepage": "https://github.com/newaz/probe-web",
+  "authors": [
+    "shahriar newaz <shahriar.newaz@sonymobile.com>"
+  ],
+  "description": "probe web",
+  "main": "index.html",
+  "license": "MIT",
+  "private": true,
+  "ignore": [
+    "**/.*",
+    "node_modules",
+    "bower_components",
+    "test",
+    "tests"
+  ]
+}
