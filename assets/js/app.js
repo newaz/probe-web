@@ -5,6 +5,7 @@
      [
          'ngResource',
          'ui.router',
+         'probeApp.sidebar',
          'probeApp.client',
          'probeApp.sms'
      ]);

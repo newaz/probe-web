@@ -15,7 +15,6 @@ $(function() {
 
 var Script = function () {
 
-
 //    sidebar dropdown menu auto scrolling
 
     jQuery('#sidebar .sub-menu > a').click(function () {
@@ -25,6 +24,9 @@ var Script = function () {
             $("#sidebar").scrollTo("-="+Math.abs(diff),500);
         else
             $("#sidebar").scrollTo("+="+Math.abs(diff),500);
+
+        $(this).siblings('li').removeClass('active');
+        $(this).addClass('active');
     });
 
 

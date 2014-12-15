@@ -1,18 +1,24 @@
 <aside>
-    <div id="sidebar" class="nav-collapse ">
+    <div id="sidebar" class="nav-collapse " ng-controller="SidebarCtrl">
         <!-- sidebar menu start-->
         <ul class="sidebar-menu" id="nav-accordion">
             <!--<p class="centered"><a href="profile.html"><img src="assets/img/ui-sam.jpg" class="img-circle" width="60"></a></p>-->
             <h5 class="centered">Probe Admin</h5>
             <li class="mt">
-                <a class="active" ui-sref="client">
+                <a ui-sref="client">
                     <i class="fa fa-dashboard"></i>
                     <span>Clients</span>
                 </a>
             </li>
             <li class="sub-menu">
+                <a  ui-sref="client">
+                    <i class="fa fa-map-marker"></i>
+                    <span>Clients Map</span>
+                </a>
+            </li>
+            <li class="sub-menu">
                 <a ui-sref="sms">
-                    <i class="fa fa-cogs"></i>
+                    <i class="fa fa-dashboard"></i>
                     <span>SMS</span>
                 </a>
             </li>
