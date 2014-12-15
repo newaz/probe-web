@@ -4,7 +4,11 @@
 .module('probeApp',
      [
          'ngResource',
-         'ui.router'
+         'ui.router',
+         'probeApp.client',
+         'probeApp.sms'
      ]);
-
-}());	
+    probeApp.config(function ($stateProvider, $urlRouterProvider) {
+        $urlRouterProvider.otherwise('/client');
+    });
+}());
