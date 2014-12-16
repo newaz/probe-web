@@ -9,20 +9,24 @@
                         <thead>
                         <tr>
                             <th>Registration Id</th>
-                            <th>User Id</th>
-                            <th>Device Type</th>
+                            <th>IMEI</th>
+                            <th>Phone</th>
                             <th>OS Version</th>
-                            <th>Subscriptions</th>
+                        <!--    <th>Created at</th>
+                            <th>Modified at</th>-->
+                            <th>Status</th>
                             <th>Action</th>
                         </tr>
                         </thead>
                         <tbody>
                         <tr ng-repeat="device in devices">
                             <td>{{device.id}}</td>
-                            <td>{{device.userId}}</td>
-                            <td>{{device.deviceType}}</td>
+                            <td>{{device.imei}}</td>
+                            <td>{{device.phone1}}</td>
                             <td>{{device.osVersion}}</td>
-                            <td>{{device.subscriptions}}</td>
+                <!--            <td>{{device.created}}</td>
+                            <td>{{device.modified}}</td>-->
+                            <td>{{device.status}}</td>
                             <td>
                                 <button type="button" class="btn btn-default btn-sm"
                                         ng-click="notify(device.id, 'Hello')"
@@ -33,8 +37,7 @@
 
                                 <button type="button" class="btn btn-default btn-sm"
                                         ng-click="delete($index, device.id)"
-                                        title="Remove the installation record"
-                                        >
+                                        title="Remove the installation record">
                                     <span class="glyphicon glyphicon-remove"></span>
                                 </button>
                             </td>
