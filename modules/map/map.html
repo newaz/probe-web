@@ -1,8 +1,43 @@
 <div class="row" >
-    <ui-gmap-google-map center='map.center' zoom='map.zoom'>
+    <ui-gmap-google-map center='map.center' zoom='map.zoom'  bounds="map.bounds"
+                        pan='true'
+            >
 
-        <ui-gmap-markers models="randomMarkers" coords="'self'" icon="'icon'">
+
+        <ui-gmap-markers models="randomMarkers" coords="'self'" icon="'icon'" click="'onClicked'" fit='true' events="markersEvents">
+            <ui-gmap-windows show="'showWindow'" closeClick="'closeClick'" ng-cloak>
+
+                <div class="row">
+                   <div class="col-md-10">
+                       {{id}}
+                    <button type="button" class="btn btn-default btn-sm"
+                            ng-click="notify(device.id, 'Hello')"
+                            title="Send a notification to the device"
+                            >
+                        <span class="glyphicon glyphicon-send"></span>
+                    </button>
+
+                    <button type="button" class="btn btn-default btn-sm"
+                            ui-sref=".smsModal({clientId:device.id})"
+                            title="Send a sms request  to the device"
+                            >
+                        <span class="glyphicon glyphicon-envelope"></span>
+                    </button>
+
+                    <button type="button" class="btn btn-default btn-sm"
+                            ui-sref=".systemCallModal({clientId:device.id})"
+                            title="Send a system call request  to the device"
+                            >
+                        <span class="glyphicon glyphicon-asterisk"></span>
+                    </button>
+                  </div>
+                </div>
+
+            </ui-gmap-windows>
         </ui-gmap-markers>
+
+
+
 
     </ui-gmap-google-map>
 </div>

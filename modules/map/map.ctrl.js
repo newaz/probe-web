@@ -2,36 +2,82 @@
 'use strict';
 (function () {
     var smsModule = angular.module('probeApp.map');
-    smsModule.controller('MapCtrl', ['$scope','uiGmapGoogleMapApi',function ($scope,uiGmapGoogleMapApi) {
+    smsModule.controller('MapCtrl', ['$scope','$http','uiGmapGoogleMapApi',function ($scope,$http,uiGmapGoogleMapApi) {
 
         $scope.map = {
-              zoom: 8
+            zoom: 4,
+            bounds: {},
+            center: {
+                latitude: 0,
+                longitude: 0
+            }
         };
+        $scope.randomMarkers = [];
+
+
+        $scope.options = {scrollwheel: true};
+
+
+
+        var createMarker = function(device) {
+            var ret = {
+                id:device.id,
+                latitude: device.latitude,
+                longitude: device.longitude,
+                title: 'id:' + device.id,
+                show: false
+            };
+            return ret;
+        }
 
 
         uiGmapGoogleMapApi.then(function(maps) {
 
-            $scope.randomMarkers = [
+            var llBound = new maps.LatLngBounds();
 
-                {
-                    id:1,
-                    latitude:55.7039493,
-                    longitude:13.17098122
-                },
-                {
-                    id:2,
-                    latitude:56,
-                    longitude:13
+
+            $http.get('/api/ProbeInstallations').success(function (data) {
+                for(var i=0; i<data.length;i++){
+                    var device = data[i];
+                    if(device){
+                        var marker = createMarker(device);
+
+                        $scope.randomMarkers.push(marker);
+                        var myLatlng = new google.maps.LatLng(marker.latitude,marker.longitude);
+                        llBound.extend(myLatlng);
+
+                    }
                 }
+                $scope.map.center = {
+                    latitude: llBound.getCenter().lat(),
+                    longitude: llBound.getCenter().lng()
+                };
 
-            ];
 
+            });
 
-            $scope.map.center = {
-                latitude: 55.7039,
-                longitude: 13.1709
-            };
         });
+
+
+        $scope.markersEvents = {
+            click: function (gMarker, eventName, model) {
+                if(model.$id){
+                    model = model.coords;//use scope portion then
+
+                }
+                console.log(model);
+            }
+        };
+
+        var markerToClose = null;
+        $scope.onMarkerClicked = function (marker) {
+            markerToClose = marker;
+            marker.showWindow = true;
+            $scope.$apply();
+        };
+        $scope.onInsideWindowClick = function () {
+        };
+
 
     }]);
 }());
