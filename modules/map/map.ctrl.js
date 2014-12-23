@@ -14,6 +14,7 @@
         };
         $scope.randomMarkers = [];
 
+        $scope.selectedMarker = {};
 
         $scope.options = {scrollwheel: true};
 
@@ -24,7 +25,7 @@
                 id:device.id,
                 latitude: device.latitude,
                 longitude: device.longitude,
-                title: 'id:' + device.id,
+                title:  device.phone1,
                 show: false
             };
             return ret;
@@ -63,8 +64,8 @@
             click: function (gMarker, eventName, model) {
                 if(model.$id){
                     model = model.coords;//use scope portion then
-
                 }
+                $scope.selectedMarker = model;
                 console.log(model);
             }
         };
