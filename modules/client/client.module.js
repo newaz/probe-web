@@ -41,14 +41,14 @@ clientModule.config(function ($stateProvider,modalStateProvider) {
 
     modalStateProvider.state('client.smsModal', {
         url: '/smsModal/:clientId',
-        templateUrl: 'modules/client/sendSmsModal.html',
+        templateUrl: 'modules/common/sendSmsModal.html',
         controller:'ClientCtrl'
     });
 
 
     modalStateProvider.state('client.systemCallModal', {
         url: '/systemCallModal/:clientId',
-        templateUrl: 'modules/client/systemCallModal.html',
+        templateUrl: 'modules/common/systemCallModal.html',
         controller:'ClientCtrl'
     });
 

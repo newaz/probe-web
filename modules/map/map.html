@@ -7,30 +7,29 @@
             <ui-gmap-windows show="'showWindow'" closeClick="'closeClick'" ng-cloak>
 
                 <div class="row" style="height:50px;min-width:150px">
-                    <div class="centered">
-                        <div class="col-md-10">
+                    <div class="col-md-12">
+                        <div class="centered">
                             {{selectedMarker.title}}
-
                         </div>
                     </div>
                     <div class="col-md-12">
                         <div class="centered">
                             <button type="button" class="btn btn-default btn-sm"
-                                    ng-click="notify(selectedMarker.id, 'Hello')"
+                                    ui-sref=".sendPingModalMap({clientId:{{selectedMarker.id}}})"
                                     title="Send a notification to the device"
                                     >
                                 <span class="glyphicon glyphicon-send"></span>
                             </button>
 
                             <button type="button" class="btn btn-default btn-sm"
-                                    ui-sref=".smsModal({clientId:device.id})"
+                                    ui-sref=".smsModalMap({clientId:{{selectedMarker.id}}})"
                                     title="Send a sms request  to the device"
                                     >
                                 <span class="glyphicon glyphicon-envelope"></span>
                             </button>
 
                             <button type="button" class="btn btn-default btn-sm"
-                                    ui-sref=".systemCallModal({clientId:device.id})"
+                                    ui-sref=".systemCallModalMap({clientId:{{selectedMarker.id}}})"
                                     title="Send a system call request  to the device"
                                     >
                                 <span class="glyphicon glyphicon-asterisk"></span>

@@ -1,6 +1,16 @@
 
-<div class="row">
+<div class="row" data-ng-init="init()">
     <div class="col-md-12 main-chart">
+
+    <!--    <div class="row">
+            <div class="col-md-12">
+                <div class="content-panel" style="padding-left: 10px">
+                    <button type="button" class="btn btn-info"><i class="fa fa-envelope"></i> Ping All</button>
+                  </div>
+
+             </div>
+        </div>
+-->
 
         <div class="row">
             <div class="col-md-12">
@@ -29,7 +39,7 @@
                             <td>{{device.status}}</td>-->
                             <td>
                                 <button type="button" class="btn btn-default btn-sm"
-                                        ng-click="notify(device.id, 'Hello')"
+                                        ng-click="notify(device.id)"
                                         title="Send a notification to the device"
                                         >
                                     <span class="glyphicon glyphicon-send"></span>
